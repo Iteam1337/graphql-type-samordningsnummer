@@ -2,7 +2,11 @@
   "name": "graphql-type-samordningsnummer",
   "version": "1.0.0",
   "description": "Scalar for swedish samordningsnummer",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Iteam1337/graphql-type-samordningsnummer.git"
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && ./node_modules/.bin/babel src --out-dir dist",
@@ -12,7 +16,7 @@
     "prepublish": "npm run build",
     "preversion": "npm test"
   },
-  "author": "Kiwi Holmberg",
+  "author": "Kiwi Holmberg <i@holmberg.kiwi>",
   "license": "MIT",
   "dependencies": {
     "fast-luhn": "^1.0.3"
