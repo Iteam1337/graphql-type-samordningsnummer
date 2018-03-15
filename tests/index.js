@@ -27,11 +27,15 @@ const schema = new GraphQLSchema({
 
 test('Rejects invalid formatted samordningsnummer', async t => {
   const invalid = [
-    7010632391,
-    '19701063-2391',
-    '7010632391',
-    '701063-2392', // Wrong check digit
-    '',
+    197010632391,
+    '7010632391', // Missing century
+    '19701063-2392', // Wrong check digit
+    '19701363-2398', // Month 13
+    '19701093-2395', // Day 33
+    '19701060-2394', // Day 00
+    '19700091-2399', // Month 00
+    '18991063-2398', // Too old
+    '21011063-2395', // Too young :D
     null,
     'wow'
   ]
@@ -56,7 +60,10 @@ test('Rejects invalid formatted samordningsnummer', async t => {
 
 test('Accepts valid samordningsnummer', async t => {
   const valid = [
-    '701063-2391'
+    '19701063-2391',
+    '20010363-3129',
+    '19850161-4872',
+    '19101291-6431'
   ]
 
   t.plan(valid.length)

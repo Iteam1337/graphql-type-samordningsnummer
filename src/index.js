@@ -2,14 +2,19 @@ import { GraphQLScalarType } from 'graphql'
 import { Kind } from 'graphql/language'
 import luhn from 'fast-luhn'
 
-const samordningsnummerRegex = /^\d{6}-\d{4}$/
+const yearRe = '(?:19|20)\\d{2}'
+const monthRe = '(?:0[1-9]|1[0-2])'
+const dayRe = '(?:6[1-9]|7\\d|9[0-1])'
+const randomNoRe = '\\d{4}'
+
+const samordningsnummerRegex = new RegExp(`^${yearRe}${monthRe}${dayRe}-${randomNoRe}$`)
 
 function validateSamordningsnummer (val) {
   if (!samordningsnummerRegex.test(val)) {
     throw new Error('Samordningsnummer has the wrong format')
   }
 
-  if (!luhn(val.replace('-', ''))) {
+  if (!luhn(val.substr(2).replace('-', ''))) {
     throw new Error('Samordningsnummer has the wrong check-digit')
   }
 }
