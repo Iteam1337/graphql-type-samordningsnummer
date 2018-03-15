@@ -1,0 +1,40 @@
+{
+  "name": "graphql-type-samordningsnummer",
+  "version": "1.0.0",
+  "description": "Scalar for swedish samordningsnummer",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && ./node_modules/.bin/babel src --out-dir dist",
+    "pretest": "npm run build",
+    "test": "ava --verbose",
+    "lint": "standard",
+    "prepublish": "npm run build",
+    "preversion": "npm test"
+  },
+  "author": "Kiwi Holmberg",
+  "license": "MIT",
+  "dependencies": {
+    "fast-luhn": "^1.0.3"
+  },
+  "peerDependencies": {
+    "graphql": "^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "graphql": "^0.13.1",
+    "standard": "^11.0.0"
+  },
+  "ava": {
+    "files": [
+      "tests/*.js"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "/dist"
+    ]
+  }
+}
